@@ -1,7 +1,8 @@
-/* C program to sort a given set of elements using merge sort method and find the time required to sort elements.*/
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>  //to access math.h in linux use -lm i.e.  cc 1.c -lm 
+                                                    //       ./a.out
+
 //lb = lower bound(left index), ub = upper bound,(right index),A,B,C,R are the array
 int count = 0;
 void Merge(int A[],int lb,int mid, int ub){
@@ -56,8 +57,9 @@ for(i=0; i<n; i++)
 printf("%d\t",A[i]);
 printf("\n");
 printf("\nNo. of count is %d\n",count);
-printf("\nSIZE\tAssending\tDescending\tRandom\n");
+printf("\nSIZE\tAssending\tTime\t\tDescending\tTime\t\tRandom\t\tTime\n");
 for(i = 8; i < 1000; i = i * 2){
+    int ln=2*i*log(i)/log(2);
     for(j = 0; j < i; j++){
         A[j] = j;
         B[j] =i-j;
@@ -73,10 +75,8 @@ for(i = 8; i < 1000; i = i * 2){
     MergeSort(C, 0, i-1);
     c3 = count;
     printf("\n");
-    printf("%d \t%d\t\t%d\t\t%d\n",i,c1,c2,c3);
+    printf("%d \t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n",i,c1,ln,c2,ln,c3,ln);
 }
 return 0;
 printf("\n");
 }
-
-
